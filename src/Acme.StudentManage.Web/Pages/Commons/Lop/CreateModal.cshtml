@@ -1,0 +1,34 @@
+﻿@page
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Acme.StudentManage.Web.Pages.Commons.Lop
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Acme.StudentManage.Localization
+@using Acme.StudentManage.Permissions
+@model Acme.StudentManage.Web.Pages.Commons.Lop.CreateModalModel
+@inject IHtmlLocalizer<StudentManageResource> L
+@{
+    Layout = null;
+}
+<abp-dynamic-form abp-model="ViewModel" data-ajaxForm="true" asp-page="CreateModal">
+    <div class="modal fade show" tabindex="-1" rrole="dialog" aria-modal="true" style="padding-right: 17px"; display="block;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <abp-modal-header title="@L["Create"].Value @L["TiteLop"].Value"></abp-modal-header>
+                <abp-modal-body>
+                    <abp-form-content />
+                </abp-modal-body>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                    <button type="submit" class="btn btn-primary" data-busy-text="Đang lưu..."><span>Lưu</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</abp-dynamic-form>
+<script>
+$("input").on('change', function() {
+    $(this).val($(this).val().trim());
+});
+</script>

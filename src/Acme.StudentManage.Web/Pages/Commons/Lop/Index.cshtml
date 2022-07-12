@@ -1,0 +1,48 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Acme.StudentManage.Localization
+@using Acme.StudentManage.Permissions
+@using Acme.StudentManage.Web.Pages.Commons.Lop
+@model Acme.StudentManage.Web.Pages.Commons.Lop.IndexModel
+@inject IHtmlLocalizer<StudentManageResource> L
+@inject IAuthorizationService AuthorizationService
+@inject IPageLayout PageLayout
+
+@{
+    PageLayout.Content.Title = L["Lop"].Value;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Commons/Lop/Index.js" />
+}
+
+@section styles
+{
+    <abp-style src="/Pages/Commons/Lop/Index.css" />
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["TitleLop"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                @if (await AuthorizationService
+                    .IsGrantedAsync(StudentManagePermissions.Lop.Create))
+                {
+                    <abp-button id="insertLop"
+                                text="@L["Create"].Value"
+                                icon="plus"
+                                button-type="Primary"/>
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="ClassTableLop"></abp-table>
+    </abp-card-body>
+</abp-card>
