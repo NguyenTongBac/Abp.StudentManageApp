@@ -101,7 +101,7 @@ public class StudentManageDbContext :
             b.Property(s => s.name).HasMaxLength(255).IsRequired(true);
             b.Property(s => s.age);
             b.Property(s => s.CMND).HasMaxLength(20).IsRequired(true);
-            b.HasOne(s => s.Lop).WithMany(s => s.SinhViens).HasForeignKey(s => s.LopID);
+            b.HasOne(s => s.Lop).WithMany(s => s.SinhViens).HasForeignKey(s => s.lopID);
             b.ConfigureByConvention();
         });
     }

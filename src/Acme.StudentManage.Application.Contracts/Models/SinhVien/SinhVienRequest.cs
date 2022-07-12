@@ -16,7 +16,7 @@ namespace Acme.StudentManage.Models.SinhVien
         [Required(ErrorMessage = "Requried")]
         [Display(Name = "SinhVienAge", Prompt = "PlaceHolder")]
 
-        public int tuoi { get; set; }
+        public int age { get; set; }
 
         [Required(ErrorMessage = "Requried")]
         [StringLength(20)]
@@ -24,6 +24,6 @@ namespace Acme.StudentManage.Models.SinhVien
         public string CMND { get; set; }
 
         [Required(ErrorMessage = "Requried")]
-        public virtual Guid LopID { get; set; }
+        public virtual Guid lopId { get; set; }
     }
 }

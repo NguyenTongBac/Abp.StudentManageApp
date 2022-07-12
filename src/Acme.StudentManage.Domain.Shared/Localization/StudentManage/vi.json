@@ -3,6 +3,30 @@
   "texts": {
     "Menu:Home": "Trang chủ",
     "Welcome": "Chào mừng bạn",
-    "LongWelcomeMessage": "Chào mừng bạn đến ứng dụng. Đây là một dự án khởi nghiệp dựa trên khung ABP. Để biết thêm thông tin, hãy truy cập abp.io."
+    "LongWelcomeMessage": "Chào mừng bạn đến ứng dụng. Đây là một dự án khởi nghiệp dựa trên khung ABP. Để biết thêm thông tin, hãy truy cập abp.io.",
+
+    "Permission:Create": "Thêm mới",
+    "Permission:Update": "Chỉnh sửa",
+    "Permission:Delete": "Xóa",
+    "Permission:Common": "Chung",
+    "Permission:Lop": "Lớp",
+    "Permission:SinhVien": "Sinh Viên",
+
+    "Create": "Thêm mới",
+    "Edite": "Chỉnh sửa",
+    "Search": "Tìm kiếm",
+    "STT": "STT",
+    "TuKhoa": "Từ khóa",
+    "PlaceHolderSearch": "Nhập từ khóa ...",
+    "PlaceHolder": "Nhập tên",
+
+    "TitleLop": "Lớp",
+    "LopName": "Tên Lớp",
+    "note": "Ghi chú",
+    "TitleSinhVien": "Sinh Viên",
+    "SinhVienName": "Tên sinh viên",
+    "Tuoi": "Tuổi",
+    "CMND": "CMND",
+    "Lop": "Lop"
   }
 }

@@ -12,7 +12,7 @@ namespace Acme.StudentManage.Entities.Common
         public string name { get; set; }
         public int CMND { get; set; }
         public int age { get; set; }
-        public Guid LopID { get; set; }
+        public Guid lopID { get; set; }
         public Lop Lop { get; set; }
     }
 }
