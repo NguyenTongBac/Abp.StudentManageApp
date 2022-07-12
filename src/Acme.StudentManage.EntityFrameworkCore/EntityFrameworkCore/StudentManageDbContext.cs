@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Acme.StudentManage.Entities.Common;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -12,6 +13,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Acme.StudentManage.EntityFrameworkCore;
 
@@ -50,6 +52,9 @@ public class StudentManageDbContext :
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
+    public DbSet<Lop> Lops { get; set; }
+    public DbSet<SinhVien> SinhViens { get; set; }
+
     #endregion
 
     public StudentManageDbContext(DbContextOptions<StudentManageDbContext> options)
@@ -81,5 +86,23 @@ public class StudentManageDbContext :
         //    b.ConfigureByConvention(); //auto configure for the base class props
         //    //...
         //});
+
+        builder.Entity<Lop>(b =>
+        {
+            b.ToTable(StudentManageConsts.DbTablePrefix + "Lops", StudentManageConsts.DbCommonSchema);
+            b.Property(s => s.name).HasMaxLength(255).IsRequired(true);
+            b.Property(s => s.note).HasMaxLength(1000).IsRequired(true);
+            b.ConfigureByConvention();
+        });
+
+        builder.Entity<SinhVien>(b =>
+        {
+            b.ToTable(StudentManageConsts.DbTablePrefix + "SinhViens", StudentManageConsts.DbCommonSchema);
+            b.Property(s => s.name).HasMaxLength(255).IsRequired(true);
+            b.Property(s => s.age);
+            b.Property(s => s.CMND).HasMaxLength(20).IsRequired(true);
+            b.HasOne(s => s.Lop).WithMany(s => s.SinhViens).HasForeignKey(s => s.LopID);
+            b.ConfigureByConvention();
+        });
     }
 }
