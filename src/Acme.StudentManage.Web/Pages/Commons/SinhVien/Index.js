@@ -21,12 +21,14 @@
                             [
                                 {
                                     text: l('Edit'),
+                                    visible: abp.auth.isGranted('Common.SinhVien.Update'),
                                     action: function (data) {
                                         editModal.open({ id: data.record.id });
                                     }
                                 },
                                 {
                                     text: l('Delete'),
+                                    visible: abp.auth.isGranted('Common.SinhVien.Delete'),
                                     confirmMessage: function (data) {
                                         return l('Bạn có muốn xóa file này ?', data.record.name);
                                     },

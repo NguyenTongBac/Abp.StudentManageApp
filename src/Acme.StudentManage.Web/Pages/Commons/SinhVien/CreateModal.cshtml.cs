@@ -25,5 +25,9 @@ namespace Acme.StudentManage.Web.Pages.Commons.SinhVien
             await _service.CreateAsync(ViewModel);
             return NoContent();
         }
+        /*public class SinhVienModel : SinhVienRequest
+        {
+            [SelecteItems(nameof(LopList))]
+        }*/
     }
 }

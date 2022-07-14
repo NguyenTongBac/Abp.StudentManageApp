@@ -9,6 +9,7 @@ using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 using Acme.StudentManage.Models.Lop;
 using Acme.StudentManage.Services;
+using Acme.StudentManage.Permissions;
 
 namespace Acme.StudentManage.Common
 {
@@ -22,6 +23,11 @@ namespace Acme.StudentManage.Common
     {
         public LopAppService(IRepository<Lop, Guid> repository) : base(repository)
         {
+            GetPolicyName = StudentManagePermissions.Lop.Default;
+            GetListPolicyName = StudentManagePermissions.Lop.Default;
+            CreatePolicyName = StudentManagePermissions.Lop.Create;
+            UpdatePolicyName = StudentManagePermissions.Lop.Update;
+            DeletePolicyName = StudentManagePermissions.Lop.Delete;
         }
     }
 }
