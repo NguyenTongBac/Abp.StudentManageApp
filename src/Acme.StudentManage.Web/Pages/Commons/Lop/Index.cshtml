@@ -1,0 +1,73 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Acme.StudentManage.Localization
+@using Acme.StudentManage.Permissions
+@using Acme.StudentManage.Web.Pages.Commons.Lop
+@model Acme.StudentManage.Web.Pages.Commons.Lop.IndexModel
+@inject IHtmlLocalizer<StudentManageResource> L
+@inject IAuthorizationService AuthorizationService
+@inject IPageLayout PageLayout
+
+@{
+    PageLayout.Content.Title = L["Lop"].Value;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Commons/Lop/Index.js" />
+}
+
+@section styles
+{
+    <abp-style src="/Pages/Commons/Lop/Index.css" />
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-search">
+                    <div class="card-body">
+                        <div class="form-group search-form-group">
+                            <label for="search">@L["TuKhoa"].Value</label>
+                            <div class="input-group search-input-group">
+                                <input type="text" id="keyword" class="form-control search-form-control" placeholder="@L["PlaceHolderSearch"]".Value />
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-search" id="Search">
+                                        <span>@L["Search"].Value</span>
+                                    </button>
+                                </span>
+                            </div>
+                            <span class="text-danger file-validation-valid" data-valmsg-for="search" data-valmsg-replace="ture"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <!-- Search form -->
+                <abp-card-title>@L["TitleLop"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                @if (await AuthorizationService
+                    .IsGrantedAsync(StudentManagePermissions.Lop.Create))
+                {
+                    <abp-button id="insertLop"
+                                text="@L["Create"].Value"
+                                icon="plus"
+                                button-type="Primary"/>
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="ClassTableLop"></abp-table>
+    </abp-card-body>
+</abp-card>

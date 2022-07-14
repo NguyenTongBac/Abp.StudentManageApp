@@ -1,0 +1,46 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Acme.StudentManage.Localization
+@using Acme.StudentManage.Permissions
+@using Acme.StudentManage.Web.Pages.Commons.SinhVien
+@model Acme.StudentManage.Web.Pages.Commons.SinhVien.IndexModel
+@inject IHtmlLocalizer<StudentManageResource> L
+@inject IAuthorizationService AuthorizationService
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["SinhVien"].Value;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/Commons/SinhVien/Index.js" />
+}
+
+@section styles
+{
+    <abp-style src="/Pages/Commons/SinhVien/Index.css" />
+}
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["TitleSinhVien"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                @if (await AuthorizationService
+                    .IsGrantedAsync(StudentManagePermissions.SinhVien.Create))
+                {
+                    <abp-button id="insertSinhVien"
+                                text="@L["Create"].Value"
+                                icon="plus"
+                                button-type="Primary"/>
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="ClassTableSinhVien"></abp-table>
+    </abp-card-body>
+</abp-card>
