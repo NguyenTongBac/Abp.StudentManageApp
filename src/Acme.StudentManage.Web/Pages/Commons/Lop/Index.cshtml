@@ -24,10 +24,35 @@
     <abp-style src="/Pages/Commons/Lop/Index.css" />
 }
 
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-search">
+                    <div class="card-body">
+                        <div class="form-group search-form-group">
+                            <label for="search">@L["TuKhoa"].Value</label>
+                            <div class="input-group search-input-group">
+                                <input type="text" id="keyword" class="form-control search-form-control" placeholder="@L["PlaceHolderSearch"]".Value />
+                                <span class="input-group-append">
+                                    <button type="submit" class="btn btn-search" id="Search">
+                                        <span>@L["Search"].Value</span>
+                                    </button>
+                                </span>
+                            </div>
+                            <span class="text-danger file-validation-valid" data-valmsg-for="search" data-valmsg-replace="ture"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <abp-card>
     <abp-card-header>
         <abp-row>
             <abp-column size-md="_6">
+                <!-- Search form -->
                 <abp-card-title>@L["TitleLop"]</abp-card-title>
             </abp-column>
             <abp-column size-md="_6" class="text-end">

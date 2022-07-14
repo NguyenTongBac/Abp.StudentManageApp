@@ -58,7 +58,7 @@
                 },
                 {
                     title: l('Lop'),
-                    data: "lopId",
+                    data: "lop",
                 },
                 {
                     title: l('CMND'),

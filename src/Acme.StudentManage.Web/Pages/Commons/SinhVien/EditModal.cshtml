@@ -1,12 +1,15 @@
 ﻿@page
+@using Acme.StudentManage.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
 @model Acme.StudentManage.Web.Pages.Commons.SinhVien.EditModalModel
+@inject IHtmlLocalizer<StudentManageResource> L
 @{
     Layout = null;
 }
 <abp-dynamic-form abp-model="sinhVien" asp-page="EditModal">
     <abp-modal>
-        <abp-modal-header title="Update Lop"></abp-modal-header>
+        <abp-modal-header title="@L["Edite"].Value @L["TitleSinhVien"].Value"></abp-modal-header>
         <abp-modal-body>
             <abp-input asp-for="Id" />
             <abp-form-content />
